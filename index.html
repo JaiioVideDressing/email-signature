@@ -3,83 +3,171 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jaiio - Générateur de Signature d'Email</title>
+  <title>Générateur de signature d'e-mail Jaiio</title>
   <style>
-    body {
+    /* Style global du conteneur */
+    .jaiio-container {
+      max-width: 600px;
+      background-color: white;
+      padding: 20px;
+      margin: 0 auto;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
       font-family: Arial, sans-serif;
-      margin: 20px;
-      padding: 0;
     }
 
-    .form-container {
-      margin-bottom: 20px;
-    }
-
-    label {
+    /* Image du logo */
+    .jaiio-logo {
       display: block;
-      margin: 10px 0 5px;
+      margin: 0 auto 20px;
+      width: 100px;
     }
 
-    input[type="text"] {
-      padding: 8px;
+    /* Titres */
+    .jaiio-title {
+      font-size: 1.5rem;
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .jaiio-subtitle {
+      font-size: 1.25rem;
+      margin-top: 40px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    /* Styles pour les inputs et labels */
+    .jaiio-form-container label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 0.875rem;
+      color: #4B5563;
+    }
+
+    .jaiio-form-container input {
       width: 100%;
+      padding: 10px;
+      border: 1px solid #d1d5db;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      font-size: 1rem;
+      background-color: #fff;
       box-sizing: border-box;
     }
 
-    .signature {
-      border: 1px solid #ddd;
+    .jaiio-form-container input:focus {
+      border-color: #3B82F6;
+      outline: none;
+    }
+
+    /* Signature d'email */
+    .jaiio-signature {
+      width: 100%;
+      border: 1px solid #E5E7EB;
+      background-color: #F9FAFB;
       padding: 15px;
-      width: 300px;
-      background-color: #f9f9f9;
+      border-radius: 8px;
     }
 
-    .signature p {
+    .jaiio-signature p {
       margin: 5px 0;
+      font-size: 1rem;
+      color: #1F2937;
     }
 
-    .copy-container {
+    /* Table dans la signature */
+    .jaiio-signature-table {
+      width: 100%;
+    }
+
+    .jaiio-signature-table td {
+      vertical-align: top;
+      padding: 10px;
+    }
+
+    .jaiio-signature-table td img {
+      display: block;
+      margin: 0 auto;
+    }
+
+    /* Liens dans la signature */
+    .jaiio-signature a {
+      color: #1F2937;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+
+    .jaiio-signature a:hover {
+      text-decoration: underline;
+    }
+
+    /* Liste d'instructions */
+    .jaiio-instructions {
+      list-style-type: disc;
+      padding-left: 20px;
       margin-top: 20px;
     }
 
-    .copy-btn {
-      padding: 10px 15px;
-      background-color: #007BFF;
-      color: #fff;
-      border: none;
-      cursor: pointer;
-      font-size: 16px;
+    .jaiio-instructions li {
+      margin-bottom: 8px;
+      font-size: 0.875rem;
+      color: #4B5563;
     }
 
-    .copy-btn:hover {
-      background-color: #0056b3;
+    /* Image du tutoriel */
+    .jaiio-tutorial-image {
+      width: 100%;
+      margin: 20px auto;
+      display: block;
     }
 
-    .success-message {
-      color: green;
-      margin-top: 10px;
+    /* Responsive */
+    @media (max-width: 768px) {
+      .jaiio-container {
+        padding: 15px;
+      }
+
+      .jaiio-form-container input {
+        padding: 8px;
+      }
+
+      .jaiio-signature-table td {
+        display: block;
+        width: 100%;
+        padding: 5px 0;
+      }
+
+      .jaiio-signature-table td img {
+        width: 70px;
+      }
     }
+
   </style>
 </head>
 <body>
 
-    <img src="https://ci3.googleusercontent.com/mail-sig/AIorK4xdAoZPnhh-paaRHQTkf2cz0uDjWmfOYGGw6mvzDPHXWSX85j3t0khEpDPy2SJ9H_NbTMOZd3I5yX3w" alt="" width="100">
-  <h1>Générateur de Signature d'Email Jaiio</h1>
+  <div class="jaiio-container">
+    <img src="https://ci3.googleusercontent.com/mail-sig/AIorK4xdAoZPnhh-paaRHQTkf2cz0uDjWmfOYGGw6mvzDPHXWSX85j3t0khEpDPy2SJ9H_NbTMOZd3I5yX3w" alt="Logo Jaiio" class="jaiio-logo">
 
-  <div class="form-container">
-    <label for="name">Nom</label>
-    <input type="text" id="name" placeholder="Votre nom" oninput="updateSignature()">
+    <h1 class="jaiio-title">Générateur de signature d'e-mail Jaiio</h1>
 
-    <label for="position">Poste</label>
-    <input type="text" id="post" placeholder="Votre poste" oninput="updateSignature()">
+    <div class="jaiio-form-container">
+      <label for="name">Nom</label>
+      <input type="text" id="name" placeholder="Votre nom" oninput="updateSignature()">
 
-    <label for="phone">Numéro de téléphone</label>
-    <input type="text" id="phone" placeholder="Votre numéro de téléphone" oninput="updateSignature()">
+      <label for="post">Poste</label>
+      <input type="text" id="post" placeholder="Votre poste" oninput="updateSignature()">
 
-    <label for="email">E-mail</label>
-    <input type="text" id="email" placeholder="Votre  e-mail" oninput="updateSignature()">
-  </div>
+      <label for="phone">Numéro de téléphone</label>
+      <input type="text" id="phone" placeholder="Votre numéro de téléphone" oninput="updateSignature()">
 
-  <h2 style="padding-top: 40px;">Signature d'Email</h2>
+      <label for="email">E-mail</label>
+      <input type="text" id="email" placeholder="Votre e-mail" oninput="updateSignature()">
+    </div>
+
+    <h2 class="jaiio-subtitle">Signature d'Email</h2>
 
     <!DOCTYPE html>
     <html xmlns="http://www.w3.org/1999/xhtml">
@@ -118,35 +206,35 @@
                                                 <tr>
                                                     <td style="border-collapse:collapse;font-family:'Work Sans',sans-serif;font-size:14px;font-style:normal;line-height:16px;font-weight:600;padding:0px!important;">
                                                         <p style="margin: 0.04px;">
-                                                            <span id="signature-name" style="font-family:'Work Sans',sans-serif;font-size:14px;font-style:normal;line-height:16px;font-weight:600;color:#1E1B1B;display:inline;">Joy Ignaczak</span>
+                                                            <span id="signature-name" style="font-family:'Work Sans',sans-serif;font-size:14px;font-style:normal;line-height:16px;font-weight:600;color:#1E1B1B;display:inline;"></span>
                                                         </p>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td style="border-collapse: collapse; font-family: 'Work Sans', sans-serif; font-size: 12px; font-style: normal; line-height: 14px; font-weight: 600; padding-bottom: 12px;">
                                                         <p style="margin: 0.04px;">
-                                                            <span id="signature-post" style="font-family:'Work Sans',sans-serif;font-size:12px;font-style:normal;line-height:14px;font-weight:600;color:#FF8383;display:inline;">Co-fondatrice</span>
+                                                            <span id="signature-post" style="font-family:'Work Sans',sans-serif;font-size:12px;font-style:normal;line-height:14px;font-weight:600;color:#FF8383;display:inline;"></span>
                                                         </p>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td style="border-collapse: collapse; font-family: 'Work Sans', sans-serif; font-size: 12px; font-style: normal; line-height: 14px; font-weight: 400; padding-bottom: 2px;">
                                                         <p style="margin: 0.04px;">
-                                                            <span id="signature-phone" style="font-family:'Work Sans',sans-serif;font-size:12px;font-style:normal;line-height:14px;font-weight:400;color:#1E1B1B;display:inline;">07 78 87 79 75</span>
+                                                            <a id="signature-phone" style="font-family:'Work Sans',sans-serif;font-size:12px;font-style:normal;line-height:14px;font-weight:400;color:#1E1B1B;display:inline; text-decoration: none;" href=""></a>
                                                         </p>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td style="border-collapse: collapse; font-family: 'Work Sans', sans-serif; font-size: 12px; font-style: normal; line-height: 14px; font-weight: 400; padding-bottom: 22px;">
                                                         <p style="margin: 0.04px;">
-                                                            <span id="signature-email" style="font-family:'Work Sans',sans-serif;font-size:12px;font-style:normal;line-height:14px;font-weight:400;color:#1E1B1B;display:inline;">joy@jaiio.fr</span>
+                                                            <a id="signature-email" style="font-family:'Work Sans',sans-serif;font-size:12px;font-style:normal;line-height:14px;font-weight:400;color:#1E1B1B;display:inline; text-decoration: none;" href=""></a>
                                                         </p>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td style="border-collapse: collapse; font-family: 'Work Sans', sans-serif; font-size: 12px; font-style: normal; line-height: 14px; font-weight: 800; padding-bottom: 14px;">
                                                         <p style="margin: 0.04px;">
-                                                            <span style="font-family:'Work Sans',sans-serif;font-size:12px;font-style:normal;line-height:14px;font-weight:800;color:#1E1B1B;display:inline;">Plus qu'un clic pour revendre ce que vous ne portez plus et trouver votre prochain coup de cœur !</span>
+                                                            <span style="font-family:'Work Sans',sans-serif;font-size:12px;font-style:normal;line-height:14px;font-weight:800;color:#1E1B1B;display:inline; text-decoration: none;">Plus qu'un clic pour revendre ce que vous ne portez plus et trouver votre prochain coup de cœur !</span>
                                                         </p>
                                                     </td>
                                                 </tr>
@@ -203,17 +291,52 @@
     </body>
     </html>
 
+    <h2 class="jaiio-subtitle">Comment faire ?</h2>
+
+    <ul class="jaiio-instructions">
+      <li>Ouvre Gmail sur ton ordinateur.</li>
+      <li>Clique sur l’icône en forme de roue dentée (en haut à droite) puis sur "Voir tous les paramètres".</li>
+      <li>Dans l’onglet "Général", fais défiler vers le bas jusqu’à la section "Signature".</li>
+      <li>Clique sur "Créer une nouvelle signature" si tu n’en as pas, ou sélectionne ta signature existante pour la modifier.</li>
+      <li>Copie et colle la signature que tu as configurée sur ce site.</li>
+      <li>Choisis cette signature par défaut pour les nouveaux mails et les réponses.</li>
+      <li>Fais défiler jusqu’en bas de la page et clique sur "Enregistrer les modifications".</li>
+    </ul>
+
+    <img src="tuto.png" alt="Tutoriel" class="jaiio-tutorial-image">
+
+  </div>
+
   <script>
     function updateSignature() {
-      const name = document.getElementById('name').value || 'Votre nom';
-      const position = document.getElementById('post').value || 'Votre poste';
-      const phone = document.getElementById('phone').value || 'Votre numéro de téléphone';
-      const email = document.getElementById('email').value || 'Votre e-mail';
+      const name = document.getElementById('name').value;
+      const position = document.getElementById('post').value;
+      let phone = document.getElementById('phone').value;
+      const email = document.getElementById('email').value;
 
       document.getElementById('signature-name').textContent = name;
       document.getElementById('signature-post').textContent = position;
       document.getElementById('signature-phone').textContent = phone;
       document.getElementById('signature-email').textContent = email;
+
+        // 1. Supprimer tous les espaces, tirets, points, et autres caractères non numériques sauf le "+"
+        phone = phone.replace(/[^\d+]/g, ''); // Supprime tout sauf les chiffres et le "+"
+
+        // 2. Si le numéro commence par "+33", le conserver, sinon vérifier s'il commence par 0
+        if (!phone.startsWith('+33')) {
+        // Vérifier si le numéro commence par "0" et ajouter "33" après suppression du "0"
+        if (phone.startsWith('0')) {
+            phone = '+33' + phone.substring(1); // Ajoute "+33" au début du numéro sans le premier "0"
+        }
+        }
+
+        // 3. Limiter le numéro à 12 chiffres maximum (330XXXXXXXXX)
+        if (phone.length > 12) {
+        phone = phone.substring(0, 12);
+        }
+
+      document.getElementById('signature-phone').href = phone ? `tel:${phone}` : '#';
+      document.getElementById('signature-email').href = email ? `mailto:${email}` : '#';
     }
   </script>
 
